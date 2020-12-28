@@ -3,13 +3,17 @@
 }
 
 #navbar{
+  display: flex;
+  align-items:baseline;
   margin-left: -8px;
   margin-right: -8px;
   margin-top: -8px;
-  background-color: blue;
+  padding-bottom: 10px;
+  background-color:  #7e7e7e;
+
+  list-style-type: none;
 }
 
 .navbarElements{
-  display: flex;
-  justify-content: flex-end;
+  display: flex-end;
 }
