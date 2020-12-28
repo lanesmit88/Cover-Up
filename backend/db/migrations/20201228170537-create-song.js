@@ -1,60 +1,48 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Users", {
+    return queryInterface.createTable("Songs", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      username: {
-        type: Sequelize.STRING(30),
-        allowNull: false,
-        unique: true,
-      },
-      email: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
-      hashedPassword: {
-        type: Sequelize.STRING.BINARY,
+      length: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
-      isArtist: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
-      location: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      bio: {
+      comments: {
         type: Sequelize.TEXT,
         allowNull: true,
       },
-      profilePhoto: {
-        type: Sequelize.STRING(800),
-        allowNull: true,
-      },
-      artistName: {
+      dataUrl: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
+      },
+      originalArtist: {
+        type: Sequelize.STRING,
+      },
+      albumId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: "Albums", key: "id" },
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now"),
       },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable("Songs");
   },
 };
