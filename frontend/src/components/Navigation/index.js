@@ -34,7 +34,7 @@ function Navigation({ isLoaded }){
           Albums
         </NavLink>
       </li>
-      <li>
+      <li id="home-link-container">
         <NavLink exact to="/" className="navbarElements">
           Home Page
         </NavLink>
