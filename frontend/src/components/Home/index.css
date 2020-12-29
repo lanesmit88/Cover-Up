@@ -1,25 +1,55 @@
 #home-page-container{
-    height: 200px;
-    background: chocolate;
+    height: 1200px;
+    background: black;
     position: relative;
     overflow: hidden;
 }
 
-#home-page-container img{
+#logo2 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: black;
+    order: -10;
+    margin-top: -620px;
+}
 
-width: 400px;
+#logo{
+width: 220px;
+position: absolute;
+margin-left: -6px;
 }
 
 #home-page-overlay{
-    height: 200px;
-    width: 100%;
-    /* background: rgba(0,0,0,.7); */
+   height: 350px;
+   width: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+} 
+#home-page-overlay h1{
+    font-size: 60px;
+    color: #7e7e7e;
+    margin-left: 300px;
+    margin-top: -20px;
     position: absolute;
-    top: 0;
-    left: 0;
+    order: 2;
+    display: flex;
+    justify-content: end;
 }
 
-#home-page-overlay h1{
-    color: white;
-    
+
+#home-page-container h3{
+    font-size: 20px;
+    color: #7e7e7e;
+    margin-left: 20px;
+    margin-top: 440px;
+    position: relative;
+    order: 2;
+    display: flex;
+    justify-content: end;
 }

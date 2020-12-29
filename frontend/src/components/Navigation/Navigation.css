@@ -1,5 +1,9 @@
+#dropdown-container{
+position: absolute;
+}
 .profile-dropdown {
   position: absolute;
+  order: 5;
 }
 #navbar {
   background-color: #7e7e7e;

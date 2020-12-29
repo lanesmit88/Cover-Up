@@ -25,9 +25,6 @@ function Navigation({ isLoaded }){
   return (
     <ul id="navbar">
       <li>
-        <h2>Cover Up</h2>
-      </li>
-      <li>
         <NavLink to="/users/:id" className="navbarElements">
           Profile
         </NavLink>
