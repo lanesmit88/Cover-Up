@@ -1,0 +1,25 @@
+#home-page-container{
+    height: 200px;
+    background: chocolate;
+    position: relative;
+    overflow: hidden;
+}
+
+#home-page-container img{
+
+width: 400px;
+}
+
+#home-page-overlay{
+    height: 200px;
+    width: 100%;
+    /* background: rgba(0,0,0,.7); */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#home-page-overlay h1{
+    color: white;
+    
+}

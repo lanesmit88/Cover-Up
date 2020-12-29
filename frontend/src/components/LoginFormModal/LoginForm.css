@@ -7,10 +7,7 @@
     
 }
 
-h1{
-    margin-block-start: 8px;
-    margin-block-end: 0px
-}
+
 #loginHeader{
     display: flex;
     justify-content: center;
