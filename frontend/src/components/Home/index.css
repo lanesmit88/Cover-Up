@@ -40,7 +40,7 @@ margin-top: 50px;
     position: absolute;
     order: 2;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 
@@ -52,5 +52,4 @@ margin-top: 50px;
     position: relative;
     order: 2;
     display: flex;
-    justify-content: end;
 }

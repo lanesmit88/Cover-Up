@@ -11,8 +11,8 @@ const Home = () => {
   return (
     <div>
       <div id="home-page-container">
-        <img id="logo2" src={logo2} />
-        <img id="logo" src={logo} />
+        <img id="logo2" src={logo2} alt="" />
+        <img id="logo" src={logo} alt="" />
         <div id="home-page-overlay">
           <h1>Welcome to Cover Up</h1>
         </div>

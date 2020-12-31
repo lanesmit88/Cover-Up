@@ -1,8 +1,8 @@
 import "./index.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+// import { NavLink } from "react-router-dom";
 
 import { fetchArtistData } from "../../store/artists";
 
@@ -23,7 +23,7 @@ const ArtistPage = () => {
     <div id="artist-page-container">
       <div id="artist-page-header">
         <div>
-          <img src={artist.profilePhoto} />
+          <img src={artist.profilePhoto} alt="" />
         </div>
         <div id="artist-header-text">
           <h1>{artist.artistName}</h1>

@@ -2,8 +2,8 @@ import "./index.css";
 
 // import { fetch } from "../../store/csrf";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import {fetchAllArtists} from '../../store/artists'
 
@@ -13,7 +13,7 @@ const Artist = ({ artist }) => {
       <NavLink to={`/artists/${artist.id}`}>
       <h3>{artist.artistName}</h3>
       </NavLink>
-      {artist.profilePhoto && <img src={artist.profilePhoto}/>}
+      {artist.profilePhoto && <img src={artist.profilePhoto} alt="" />}
     </div>
   );
 };
