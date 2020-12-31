@@ -1,0 +1,9 @@
+.artist-page-container{
+    position: absolute;
+    margin-top: 50px;
+}
+
+
+#artist-page-container h1{
+    font: 50px;
+}

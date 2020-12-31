@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/Home";
 import Artists from "./components/Artists"
+import ArtistPage from "./components/ArtistPage"
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/" exact>
             <HomePage />
+          </Route>
+          <Route path="/artists/2">
+            <ArtistPage />
           </Route>
           <Route path="/artists">
             <Artists />

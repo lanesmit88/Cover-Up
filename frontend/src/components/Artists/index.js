@@ -10,7 +10,7 @@ import {fetchAllArtists} from '../../store/artists'
 const Artist = ({ artist }) => {
   return (
     <div className="each-artist-container">
-      <NavLink to="/artists/:id">
+      <NavLink to={`/artists/${artist.id}`}>
       <h3>{artist.artistName}</h3>
       </NavLink>
       {artist.profilePhoto && <img src={artist.profilePhoto}/>}
