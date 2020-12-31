@@ -35,13 +35,28 @@ const Artists = () => {
       <h2>Look at these artists!</h2>
       {!artists && <h3>Loading...</h3>}
       {artists &&
+      //Look here 
         artists.map((artist) => {
-          console.log(artist)
           return  <Artist artist={artist} key={artist.id}/>
         })}
-       
     </div>
   );
 };
 
 export default Artists;
+
+
+
+
+
+// Made a redux reducer to fetch all of my artists. Made a route for all the artists with links to there pages also styled it. 
+
+
+// Make a profile page for each unique artist showing all of their albums. CRUD for albums.
+
+
+// struggling with making a redux reducer to fetch the data from a single artist.
+
+
+
+
