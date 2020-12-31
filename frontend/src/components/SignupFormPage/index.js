@@ -35,7 +35,7 @@ function SignupFormPage() {
   };
 
   return (
-    <>
+    <div id="signup-container">
       <h1 id="signupHeader">Sign Up</h1>
       <form id="signupForm" onSubmit={handleSubmit}>
         <ul>
@@ -86,7 +86,7 @@ function SignupFormPage() {
         <label className="signupLabels">
           Bio:
           <textarea
-            className="signupInput"
+            className="signupBioInput"
             type="text"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
@@ -134,7 +134,7 @@ function SignupFormPage() {
           Sign Up
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

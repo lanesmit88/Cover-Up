@@ -11,6 +11,10 @@
   z-index: 6;
 }
 
+#navbar > li {
+height: 50px;
+}
+
 #dropdown-container {
   position: absolute;
   display: flex;
@@ -39,12 +43,11 @@
 #home-link-container {
   display: flex;
 }
-
 .navbarElements {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
   text-decoration: none;
 }
 
@@ -52,6 +55,6 @@
   background-color: #686868;
 }
 
-.active {
+.navbarElements.active {
   background-color: #265d0c;
 }

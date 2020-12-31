@@ -1,17 +1,19 @@
 import "./index.css";
 
-import { fetch } from "../../store/csrf";
+// import { fetch } from "../../store/csrf";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
 import {fetchAllArtists} from '../../store/artists'
 
 const Artist = ({ artist }) => {
-  console.log(artist)
   return (
-    <div>
+    <div className="each-artist-container">
+      <NavLink to="/artists/:id">
       <h3>{artist.artistName}</h3>
-      <img src={artist.profilePhoto}/>
+      </NavLink>
+      {artist.profilePhoto && <img src={artist.profilePhoto}/>}
     </div>
   );
 };
@@ -34,7 +36,8 @@ const Artists = () => {
       {!artists && <h3>Loading...</h3>}
       {artists &&
         artists.map((artist) => {
-          return  <Artist artist={artist} />
+          console.log(artist)
+          return  <Artist artist={artist} key={artist.id}/>
         })}
        
     </div>
