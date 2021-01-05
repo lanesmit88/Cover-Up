@@ -22,7 +22,7 @@
   justify-content: space-around;
 }
 
-#artist-page-container img {
+#artist-profile-photo {
   margin-top: 40px;
   margin-left: 40px;
   max-width: 280px;
@@ -33,7 +33,7 @@
   border-radius: 5px;
 }
 
-#artist-page-container h1 {
+#artist-page-name {
   font-size: 60px;
   color: #7e7e7e;
   position: relative;

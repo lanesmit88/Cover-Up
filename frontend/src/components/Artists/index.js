@@ -20,7 +20,7 @@ const Artist = ({ artist }) => {
 
 const Artists = () => {
   const dispatch = useDispatch();
-  const artists = useSelector( reduxState => {
+  const artists = useSelector( (reduxState) => {
     return reduxState.artists;
   })
 
@@ -44,19 +44,5 @@ const Artists = () => {
 };
 
 export default Artists;
-
-
-
-
-
-// Made a redux reducer to fetch all of my artists. Made a route for all the artists with links to there pages also styled it. 
-
-
-// Make a profile page for each unique artist showing all of their albums. CRUD for albums.
-
-
-// struggling with making a redux reducer to fetch the data from a single artist.
-
-
 
 

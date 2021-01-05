@@ -2,37 +2,46 @@ import "./index.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-// import { NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { fetchArtistData } from "../../store/artists";
+import Albums from "../Albums";
+
+import { fetchArtistData } from "../../store/artist";
 
 const ArtistPage = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   const artist = useSelector((reduxState) => {
-    return reduxState.artists;
+    return reduxState.artist.artist;
   });
-  console.log(artist);
 
   useEffect(async () => {
     // const res = await fetch("/api/artists");
     // setArtists(res.data.artists);
-    dispatch(fetchArtistData());
+    dispatch(fetchArtistData(id));
   }, []);
+
+  if(!artist) {
+    return null
+  }
+
 
   return (
     <div id="artist-page-container">
       <div id="artist-page-header">
         <div>
-          <img src={artist.profilePhoto} alt="" />
+
+          <img id="artist-profile-photo" src={artist.profilePhoto} alt="" />
+
         </div>
         <div id="artist-header-text">
-          <h1>{artist.artistName}</h1>
+          <h1 id="artist-page-name">{artist.artistName}</h1>
           <h3>Location: {artist.location}</h3>
           <h5>Bio: {artist.bio}</h5>
         </div>
       </div>
       <div id="artist-page-albums">
-      <h4>HGIIIIIIIIIIIIIIIIII</h4>
+        <Albums />
       </div>
     </div>
   );
