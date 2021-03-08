@@ -14,7 +14,7 @@ module.exports = {
       },
       length: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       comments: {
         type: Sequelize.TEXT,

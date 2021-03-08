@@ -7,16 +7,16 @@ const { check } = require("express-validator");
 router.post(
   "/create",
   asyncHandler(async (req, res, next) => {
-    const { songName, URL, albumId, ogArtist } = req.body;
+    const { name, dataUrl, albumId, ogArtist } = req.body;
     const newSong = await Song.create({
-      songName,
-      URL,
+      name,
+      dataUrl,
       albumId,
       ogArtist,
     });
-    
+
     const addSong = await Song.findByPk(newSong.id, {
-      include: [User, Album],
+      include: Album,
     });
     res.json({ addSong });
   })

@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "Song",
     {
       name: { type: DataTypes.STRING, allowNull: false },
-      length: { type: DataTypes.INTEGER, allowNull: false },
+      length: { type: DataTypes.INTEGER, allowNull: true },
       comments: { type: DataTypes.TEXT, allowNull: true },
       dataUrl: { type: DataTypes.STRING, allowNull: false },
       originalArtist: { type: DataTypes.STRING },
