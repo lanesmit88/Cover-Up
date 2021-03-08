@@ -1,11 +1,12 @@
 import "./index.css";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAlbumData } from "../../store/artist";
-import { addSong } from "../../store/song"
+import { addSong } from "../../store/song";
+
 const NewSong = () => {
+  const dispatch = useDispatch();
   const [songName, setSongName] = useState("");
   const [URL, setURL] = useState("");
   const [ogArtist, setOgArtist] = useState("");
@@ -13,11 +14,11 @@ const NewSong = () => {
 
   function newPostHandeler(e) {
     e.preventDefault();
-    dispatch(addSong({songName, URL, ogArtist, albumId}))
-    setSongName("")
-    setURL("")
-    setOgArtist("")
-    setOgArtist("")
+    dispatch(addSong({ songName, URL, ogArtist, albumId }));
+    setSongName("");
+    setURL("");
+    setOgArtist("");
+    setOgArtist("");
   }
 
   return (
