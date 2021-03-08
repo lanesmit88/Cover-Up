@@ -1,28 +1,63 @@
 import "./index.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAlbumData } from "../../store/artist";
-
+import { addSong } from "../../store/song"
 const NewSong = () => {
-  const { id, albumId, csrfToken } = useParams();
+  const [songName, setSongName] = useState("");
+  const [URL, setURL] = useState("");
+  const [ogArtist, setOgArtist] = useState("");
+  const [albumId, setAlbumId] = useState("");
 
   function newPostHandeler(e) {
     e.preventDefault();
+    dispatch(addSong({songName, URL, ogArtist, albumId}))
+    setSongName("")
+    setURL("")
+    setOgArtist("")
+    setOgArtist("")
   }
 
   return (
     <div id="new-song-form">
       <form onSubmit={newPostHandeler}>
-        <label>Song Name</label>
-        <input type="text" required></input>
-        <label>URL Path</label>
-        <input type="text" required></input>
-        <label>Original Artist</label>
-        <input type="text"></input>
-        <label>Album id</label>
-        <input type="text" required></input>
+        <input
+          placeholder="Song Name"
+          type="text"
+          value={songName}
+          onChange={(e) => {
+            setSongName(e.target.value);
+          }}
+          required
+        ></input>
+        <input
+          placeholder="URL Path"
+          type="text"
+          value={URL}
+          onChange={(e) => {
+            setURL(e.target.value);
+          }}
+          required
+        ></input>
+        <input
+          placeholder="Original Artist"
+          type="text"
+          value={ogArtist}
+          onChange={(e) => {
+            setOgArtist(e.target.value);
+          }}
+        ></input>
+        <input
+          placeholder="Album id"
+          type="text"
+          value={albumId}
+          onChange={(e) => {
+            setAlbumId(e.target.value);
+          }}
+          required
+        ></input>
         <button type="submit">Add New Song</button>
       </form>
     </div>
