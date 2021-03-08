@@ -4,6 +4,8 @@ const ARTIST_DATA = "artists/artistData";
 
 const ALBUM_DATA = "artist/albumData";
 
+const ADD_SONG = "album/addSong";
+
 const artistData = (artist) => ({
   type: ARTIST_DATA,
   artist: artist,
@@ -12,6 +14,11 @@ const artistData = (artist) => ({
 const albumData = (album) => ({
   type: ALBUM_DATA,
   album: album,
+});
+
+const AddSong = (song) => ({
+  type: ADD_SONG,
+  song: song,
 });
 
 export const fetchArtistData = (artistId) => {
@@ -28,9 +35,20 @@ export const fetchAlbumData = (artistId, albumId) => {
   };
 };
 
+export const addSong = (body) => {
+  return async (dispatch) => {
+    const res = await fetch(`/api/artists/create`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+    const newPost = res.data.addSong;
+    dispatch(AddSong(newPost));
+  };
+};
+
 const initialState = [];
 
-function reducer(state = initialState, action) {
+function artistReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case ARTIST_DATA:
@@ -39,9 +57,14 @@ function reducer(state = initialState, action) {
     case ALBUM_DATA:
       newState = action.album;
       return newState;
+    case ADD_SONG:
+      newState = JSON.parse(JSON.stringify(state));
+      let songsArr = newState.songs;
+      songsArr.push(action.song)
+      return newState;
     default:
       return state;
   }
 }
 
-export default reducer;
+export default artistReducer;

@@ -3,20 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAlbumData } from "../../store/artist";
-import { addSong } from "../../store/song";
+import { addSong } from "../../store/artist";
 
 const NewSong = () => {
   const dispatch = useDispatch();
-  const [songName, setSongName] = useState("");
-  const [URL, setURL] = useState("");
+  const [name, setName] = useState("");
+  const [dataUrl, setDataUrl] = useState("");
   const [ogArtist, setOgArtist] = useState("");
   const [albumId, setAlbumId] = useState("");
 
   function newPostHandeler(e) {
     e.preventDefault();
-    dispatch(addSong({ songName, URL, ogArtist, albumId }));
-    setSongName("");
-    setURL("");
+    dispatch(addSong({ name, dataUrl, ogArtist, albumId }));
+    setName("");
+    setDataUrl("");
     setOgArtist("");
     setOgArtist("");
   }
@@ -27,18 +27,18 @@ const NewSong = () => {
         <input
           placeholder="Song Name"
           type="text"
-          value={songName}
+          value={name}
           onChange={(e) => {
-            setSongName(e.target.value);
+            setName(e.target.value);
           }}
           required
         ></input>
         <input
           placeholder="URL Path"
           type="text"
-          value={URL}
+          value={dataUrl}
           onChange={(e) => {
-            setURL(e.target.value);
+            setDataUrl(e.target.value);
           }}
           required
         ></input>

@@ -75,6 +75,24 @@ router.post(
   })
 );
 
+router.post(
+  "/create",
+  asyncHandler(async (req, res, next) => {
+    const { name, dataUrl, albumId, ogArtist } = req.body;
+    const newSong = await Song.create({
+      name,
+      dataUrl,
+      albumId,
+      ogArtist,
+    });
+
+    const addSong = await Song.findByPk(newSong.id, {
+      include: Album,
+    });
+    res.json({ addSong });
+  })
+);
+
 router.delete("/:id/:albumId/:songId"),
   asyncHandler(async (req, res, next) => {
     const { songId } = req.body;
@@ -82,7 +100,6 @@ router.delete("/:id/:albumId/:songId"),
       where: {id: songId},
     });
 
-    console.log(song)
     await song.destroy();
      res.redirect("artists/:id/:albumId");;
   });

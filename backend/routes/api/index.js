@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
-const songsRouter = require("./songs.js");
 const artistsRouter = require("./artists.js");
 // GET /api/set-token-cookie
 const asyncHandler = require("express-async-handler");
@@ -33,7 +32,6 @@ router.get("/require-auth", requireAuth, (req, res) => {
   return res.json(req.user);
 });
 
-
 router.post("/test", function (req, res) {
   res.json({ requestBody: req.body });
 });
@@ -44,6 +42,5 @@ router.use("/users", usersRouter);
 
 router.use("/artists", artistsRouter);
 
-router.use("/songs", songsRouter);
 
 module.exports = router;
