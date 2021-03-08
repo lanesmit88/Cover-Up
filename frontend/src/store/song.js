@@ -9,7 +9,7 @@ const AddSong = (song) => ({
 
 export const addSong = (body) => {
   return async (dispatch) => {
-    const res = await fetch(`/api/users/${body.userId}/post`, {
+    const res = await fetch(`/api/songs/create`, {
       method: "POST",
       body: JSON.stringify(body),
     });
@@ -23,8 +23,8 @@ const initialState = [];
 function songsReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case NEW_POST:
-      return [...state, action.post];
+    case ADD_SONG:
+      return [...state, action.song];
     default:
       return state;
   }
