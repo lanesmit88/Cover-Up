@@ -6,8 +6,8 @@ import { deleteSong } from "../../store/artist";
 
 const Song = ({ song, album, artist }) => {
   let songId = song.id;
-  let albumId = album.id;
-  let artistId = artist.id;
+  let albumId = album;
+  let artistId = artist;
   const dispatch = useDispatch();
   function handleDeleteSong(e) {
     e.preventDefault();

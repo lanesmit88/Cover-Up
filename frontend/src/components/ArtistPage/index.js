@@ -9,7 +9,7 @@ import Albums from "../Albums";
 import { fetchArtistData } from "../../store/artist";
 
 const ArtistPage = () => {
-  const { id } = useParams();
+  const { artistId } = useParams();
   const dispatch = useDispatch();
   const albums = useSelector((reduxState) => {
     return reduxState.artist.albums;
@@ -17,7 +17,7 @@ const ArtistPage = () => {
 
 
   useEffect(async () => {
-    dispatch(fetchArtistData(id));
+    dispatch(fetchArtistData(artistId));
   }, []);
 
   if (!albums) {

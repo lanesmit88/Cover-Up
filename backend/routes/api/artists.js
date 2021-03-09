@@ -24,8 +24,7 @@ router.get(
       where: {
         artistId: userId,
       },
-      include: [User, Song]
-
+      include: [User, Song],
     });
     res.json({ albums });
   })
@@ -35,13 +34,13 @@ router.get(
   "/:id/:albumId",
   asyncHandler(async (req, res, next) => {
     const albumId = req.params.albumId;
-    const songs = await Song.findAll({
+    const album = await Album.findOne({
       where: {
-        albumId: albumId,
+        id: albumId,
       },
+      include: Song,
     });
-    const album = await Album.findByPk(albumId);
-    res.json({ album: album, songs: songs });
+    res.json(album);
   })
 );
 

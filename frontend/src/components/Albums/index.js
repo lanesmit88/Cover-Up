@@ -9,7 +9,7 @@ const Album = ({ album }) => {
   return (
     <div className="each-album-container">
       {album.coverUrl && <img id="album-cover" src={album.coverUrl} alt="" />}
-      <NavLink to={`/artists/2/${album.id}`}>
+      <NavLink to={`/artists/2/${album.id}`} thing={"thing" }>
       <h1 id="album-names">{album.name}</h1>
       </NavLink>
       <p id="album-comments">{album.comments}</p>

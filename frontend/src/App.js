@@ -31,13 +31,13 @@ function App() {
           <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route path="/artists/:id/:albumId/:songId">
+          <Route path="/artists/:artistId/:albumId/:songId">
             <Album />
           </Route>
-          <Route path="/artists/:id/:albumId">
+          <Route path="/artists/:artistId/:albumId">
             <Album />
           </Route>
-          <Route path="/artists/:id">
+          <Route path="/artists/:artistId">
             <ArtistPage />
           </Route>
           <Route path="/artists">
