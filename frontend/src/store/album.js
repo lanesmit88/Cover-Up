@@ -21,17 +21,18 @@ const DeleteSong = (song) => ({
   song: song,
 });
 
-export const fetchAlbumData = (artistId, albumId) => {
+export const albumData = (body) => {
   return async (dispatch) => {
-    const response = await fetch(`/api/artists/${artistId}/${albumId}`);
-    dispatch(AlbumData(response.data));
+    const res = await fetch(`/api/artists/${body.artistId}/${body.albumId}`);
+    const album = res.data.album;
+    dispatch(AlbumData(album));
   };
 };
 
 export const addSong = (body) => {
   return async (dispatch) => {
     const res = await fetch(
-      `/api/artists/${body.artistId}/${body.albumId}/${body.songId}/create`,
+      `/api/artists/${body.artistId}/${body.albumId}/create`,
       {
         method: "POST",
         body: JSON.stringify(body),
@@ -63,13 +64,10 @@ function albumReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case ALBUM_DATA:
-      newState = action.album;
-      return newState;
-    // case ADD_SONG:
-    //   newState = JSON.parse(JSON.stringify(state));
-    //   let songsArr = newState.songs;
-    //   songsArr.push(action.song);
-    //   return newState;
+      return action.album;
+    case ADD_SONG:
+      state.Songs.push(action.song);
+      return state;
     case DELETE_SONG:
       return state.filter(
         (piece) => piece.Songs.id !== parseInt(action.song.songId)

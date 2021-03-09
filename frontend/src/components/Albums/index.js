@@ -1,7 +1,6 @@
 import "./index.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { fetchArtistData } from "../../store/artist";
 
@@ -9,7 +8,7 @@ const Album = ({ album }) => {
   return (
     <div className="each-album-container">
       {album.coverUrl && <img id="album-cover" src={album.coverUrl} alt="" />}
-      <NavLink to={`/artists/2/${album.id}`} thing={"thing" }>
+      <NavLink to={`/artists/2/${album.id}`} >
       <h1 id="album-names">{album.name}</h1>
       </NavLink>
       <p id="album-comments">{album.comments}</p>

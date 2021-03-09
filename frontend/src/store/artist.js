@@ -9,8 +9,8 @@ const artistData = (artist) => ({
 
 export const fetchArtistData = (artistId) => {
   return async (dispatch) => {
-    const response = await fetch(`/api/artists/${artistId}`);
-    dispatch(artistData(response.data));
+    const res = await fetch(`/api/artists/${artistId}`);
+    dispatch(artistData(res.data));
   };
 };
 

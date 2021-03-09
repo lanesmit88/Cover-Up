@@ -40,12 +40,13 @@ router.get(
       },
       include: Song,
     });
-    res.json(album);
+
+    res.json({album});
   })
 );
 
 router.post(
-  "/:artistId/:albumId/:songId/create",
+  "/:artistId/:albumId/create",
   asyncHandler(async (req, res, next) => {
     const { name, dataUrl, albumId, ogArtist } = req.body;
     const newSong = await Song.create({
@@ -55,14 +56,13 @@ router.post(
       ogArtist,
     });
 
-    const addSong = await Song.findByPk(newSong.id, {
-      include: Album,
-    });
+    const addSong = await Song.findByPk(newSong.id);
     res.json({ addSong });
   })
 );
 
-router.delete("/:artistId/:albumId/:songId/delete",
+router.delete(
+  "/:artistId/:albumId/:songId/delete",
   asyncHandler(async (req, res, next) => {
     songId = req.params.songId;
 
@@ -71,6 +71,7 @@ router.delete("/:artistId/:albumId/:songId/delete",
     await removeSong.destroy();
     let deleteSong = { songId };
     res.json({ deleteSong });
-  }))
+  })
+);
 
 module.exports = router;

@@ -2,20 +2,31 @@ import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchAlbumData } from "../../store/album";
+import { albumData } from "../../store/album";
 import { addSong } from "../../store/artist";
 import Song from "../Song";
 import NewSong from "../NewSong";
 
 const Album = () => {
   const dispatch = useDispatch();
-  const { artistId, albumId } = useParams();
+  let { artistId, albumId } = useParams();
   const album = useSelector((reduxState) => {
     return reduxState.album;
   });
+  const loggedInUserId = useSelector((reduxState) => {
+    return reduxState.session.user.id;
+  });
+
+  // if (album) {
+  //   let albumLength = album.Songs.length;
+  // }
 
   useEffect(async () => {
-    dispatch(fetchAlbumData(artistId, albumId));
+    if (artistId && albumId) {
+      artistId = parseInt(artistId);
+      albumId = parseInt(albumId);
+      dispatch(albumData({ artistId, albumId }));
+    }
   }, []);
 
   return (
@@ -33,6 +44,7 @@ const Album = () => {
             />
           );
         })}
+      {/* {artistId == loggedInUserId && <NewSong />} */}
       <NewSong />
     </div>
   );

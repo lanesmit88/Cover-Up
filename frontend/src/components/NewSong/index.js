@@ -1,24 +1,27 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { addSong } from "../../store/album";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 const NewSong = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [dataUrl, setDataUrl] = useState("");
   const [ogArtist, setOgArtist] = useState("");
-  const [albumId, setAlbumId] = useState("");
+  const [createSong, SetCreateSong] = useState(false)
+  const { albumId, artistId } = useParams();
 
-  function newPostHandeler(e) {
+  function newSongHandeler(e) {
     e.preventDefault();
-    dispatch(addSong({ name, dataUrl, ogArtist, albumId }));
+    dispatch(addSong({ name, dataUrl, ogArtist, albumId, artistId }));
     setName("");
     setDataUrl("");
     setOgArtist("");
-    setOgArtist("");
+    SetCreateSong(true)
   }
+
   return (
     <div id="new-song-form">
-      <form onSubmit={newPostHandeler}>
+      <form onSubmit={newSongHandeler}>
         <input
           placeholder="Song Name"
           type="text"
@@ -44,15 +47,6 @@ const NewSong = () => {
           onChange={(e) => {
             setOgArtist(e.target.value);
           }}
-        ></input>
-        <input
-          placeholder="Album id"
-          type="text"
-          value={albumId}
-          onChange={(e) => {
-            setAlbumId(e.target.value);
-          }}
-          required
         ></input>
         <button type="submit">Add New Song</button>
       </form>

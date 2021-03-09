@@ -6,9 +6,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/Home";
-import Artists from "./components/Artists"
-import ArtistPage from "./components/ArtistPage"
-import Album from "./components/Album"
+import Artists from "./components/Artists";
+import ArtistPage from "./components/ArtistPage";
+import Album from "./components/Album";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function App() {
           <Route path="/artists/:artistId/:albumId/:songId">
             <Album />
           </Route>
-          <Route path="/artists/:artistId/:albumId">
+          <Route path="/artists/:artistId/:albumId" exact>
             <Album />
           </Route>
           <Route path="/artists/:artistId">
