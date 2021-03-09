@@ -7,7 +7,10 @@ const { check } = require("express-validator");
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
-    const artists = await User.findAll({ where: { isArtist: true } });
+    const artists = await User.findAll({
+      where: { isArtist: true },
+      include: Album,
+    });
     res.json({ artists: artists });
   })
 );
@@ -21,8 +24,10 @@ router.get(
       where: {
         artistId: userId,
       },
+      include: [User, Song]
+
     });
-    res.json({ artist: artist, albums: albums, userId: userId });
+    res.json({ albums });
   })
 );
 
@@ -39,44 +44,9 @@ router.get(
     res.json({ album: album, songs: songs });
   })
 );
-const songValidator = [
-  check("name")
-    .isLength({ max: 40 })
-    .withMessage("Name must not be more than 40 characters long"),
-  check("length")
-    .isLength({ max: 10 })
-    .withMessage("Song cant be longer than 10 minutes"),
-  // .custom((value) => !/\s/.test(value))
-  // .withMessage("No spaces are allowed in the list name")
-];
-router.post(
-  "/:id/:albumId",
-  songValidator,
-  asyncHandler(async (req, res, next) => {
-    const {
-      name,
-      length,
-      comments,
-      dataUrl,
-      originalArtist,
-      albumId,
-    } = req.body;
-
-    const newSong = Song.build({
-      name,
-      length,
-      comments,
-      dataUrl,
-      originalArtist,
-      albumId,
-    });
-    await newSong.save();
-    res.redirect(`/artists/:id/${albumId}`);
-  })
-);
 
 router.post(
-  "/create",
+  "/:artistId/:albumId/:songId/create",
   asyncHandler(async (req, res, next) => {
     const { name, dataUrl, albumId, ogArtist } = req.body;
     const newSong = await Song.create({
@@ -93,15 +63,19 @@ router.post(
   })
 );
 
-router.delete("/delete"),
+router.delete("/:artistId/:albumId/:songId/delete"),
   asyncHandler(async (req, res, next) => {
-    const { id } = req.body;
+    // const { id } = req.body;
 
-    const removeSong = await Song.findOne({ where: { id: id } });
+    // const removeSong = await Song.findOne({ where: { id: id } });
 
-    await removeSong.destroy();
-    deletePost = { id };
-    res.json({ deletePost });
-  })
+    // await removeSong.destroy();
+    // deletePost = { id };
+    // res.json({ deletePost });
+    console.log("----------------------------------------------", "hi");
+    {
+      hi: "sup";
+    }
+  });
 
 module.exports = router;

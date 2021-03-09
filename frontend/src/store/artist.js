@@ -28,7 +28,6 @@ const DeleteSong = (song) => ({
   song: song,
 });
 
-
 export const fetchArtistData = (artistId) => {
   return async (dispatch) => {
     const response = await fetch(`/api/artists/${artistId}`);
@@ -45,10 +44,13 @@ export const fetchAlbumData = (artistId, albumId) => {
 
 export const addSong = (body) => {
   return async (dispatch) => {
-    const res = await fetch(`/api/artists/create`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    });
+    const res = await fetch(
+      `/api/artists/${body.artistId}/${body.albumId}/${body.songId}/create`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+      }
+    );
     const newPost = res.data.addSong;
     dispatch(AddSong(newPost));
   };
@@ -56,7 +58,8 @@ export const addSong = (body) => {
 
 export const deleteSong = (body) => {
   return async (dispatch) => {
-    const res = await fetch(`/api/artists/delete`, {
+    console.log(body)
+    const res = await fetch(`/api/artists/${body.artistId}/${body.albumId}/${body.songId}/delete`, {
       method: "DELETE",
       body: JSON.stringify(body),
     });

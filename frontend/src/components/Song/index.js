@@ -2,14 +2,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { deleteSong } from "../../store/artist"
+import { deleteSong } from "../../store/artist";
 
-const Song = ({ song }) => {
-  const { id, albumId } = useParams();
+const Song = ({ song, album, artist }) => {
+  let songId = song.id;
+  let albumId = album.id;
+  let artistId = artist.id;
   const dispatch = useDispatch();
   function handleDeleteSong(e) {
     e.preventDefault();
-    dispatch(deleteSong({ id }));
+    dispatch(deleteSong({ songId, albumId, artistId }));
   }
   return (
     <div className="each-song-container">

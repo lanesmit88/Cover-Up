@@ -11,37 +11,33 @@ import { fetchArtistData } from "../../store/artist";
 const ArtistPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const artist = useSelector((reduxState) => {
-    return reduxState.artist.artist;
+  const albums = useSelector((reduxState) => {
+    return reduxState.artist.albums;
   });
 
+
   useEffect(async () => {
-    // const res = await fetch("/api/artists");
-    // setArtists(res.data.artists);
     dispatch(fetchArtistData(id));
   }, []);
 
-  if(!artist) {
-    return null
+  if (!albums) {
+    return null;
   }
-
 
   return (
     <div id="artist-page-container">
       <div id="artist-page-header">
         <div>
-
-          <img id="artist-profile-photo" src={artist.profilePhoto} alt="" />
-
+          <img id="artist-profile-photo" src={albums[0].User.profilePhoto} alt="" />
         </div>
         <div id="artist-header-text">
-          <h1 id="artist-page-name">{artist.artistName}</h1>
-          <h3>Location: {artist.location}</h3>
-          <h5>Bio: {artist.bio}</h5>
+          <h1 id="artist-page-name">{albums[0].User.artistName}</h1>
+          <h3>Location: {albums[0].User.location}</h3>
+          <h5>Bio: {albums[0].User.bio}</h5>
         </div>
       </div>
       <div id="artist-page-albums">
-        <Albums />
+        <Albums albums={albums} />
       </div>
     </div>
   );

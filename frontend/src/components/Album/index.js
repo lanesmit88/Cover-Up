@@ -6,31 +6,23 @@ import { fetchAlbumData } from "../../store/artist";
 import { addSong } from "../../store/artist";
 import Song from "../Song";
 import NewSong from "../NewSong";
+import Albums from "../Albums";
 
-const Album = () => {
+const Album = ({ albums }) => {
   const { id, albumId } = useParams();
   const dispatch = useDispatch();
-  const album = useSelector((reduxState) => {
-    return reduxState.artist.songs;
-  });
 
-  useEffect(async () => {
-    // const res = await fetch("/api/artists");
-    // setArtists(res.data.artists);
-    dispatch(fetchAlbumData(id, albumId));
-  }, []);
-
-  if (!album) {
-    return null;
-  }
+  // if (!album) {
+  //   return null;
+  // }
 
   return (
     <div id="album-container">
       <h2 id="album-looker">Look at these songs!</h2>
-      {/* {!albums && <h3>Loading...</h3>} */}
-      {album &&
-        album.map((song) => {
-          return <Song song={song} key={song.id} />;
+      {!albums && <h3>Loading...</h3>}
+      {albums &&
+        Albums.map((song) => {
+          return <Song key={song.id} />;
         })}
 
       <NewSong />

@@ -35,7 +35,6 @@ const Artists = () => {
       <h2>Look at these artists!</h2>
       {!artists && <h3>Loading...</h3>}
       {artists &&
-      //Look here 
         artists.map((artist) => {
           return  <Artist artist={artist} key={artist.id}/>
         })}
