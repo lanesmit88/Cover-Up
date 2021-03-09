@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-
+import { addSong } from "../../store/album";
 const NewSong = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -10,7 +10,7 @@ const NewSong = () => {
 
   function newPostHandeler(e) {
     e.preventDefault();
-    // dispatch(addSong({ name, dataUrl, ogArtist, albumId }));
+    dispatch(addSong({ name, dataUrl, ogArtist, albumId }));
     setName("");
     setDataUrl("");
     setOgArtist("");

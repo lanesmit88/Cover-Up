@@ -62,19 +62,15 @@ router.post(
   })
 );
 
-router.delete("/:artistId/:albumId/:songId/delete"),
+router.delete("/:artistId/:albumId/:songId/delete",
   asyncHandler(async (req, res, next) => {
-    // const { id } = req.body;
+    songId = req.params.songId;
 
-    // const removeSong = await Song.findOne({ where: { id: id } });
+    const removeSong = await Song.findOne({ where: { id: songId } });
 
-    // await removeSong.destroy();
-    // deletePost = { id };
-    // res.json({ deletePost });
-    console.log("----------------------------------------------", "hi");
-    {
-      hi: "sup";
-    }
-  });
+    await removeSong.destroy();
+    let deleteSong = { songId };
+    res.json({ deleteSong });
+  }))
 
 module.exports = router;

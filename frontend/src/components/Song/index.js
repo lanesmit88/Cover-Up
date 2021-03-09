@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { deleteSong } from "../../store/artist";
+import { deleteSong } from "../../store/album";
 
-const Song = ({ song, album, artist }) => {
+const Song = ({ song }) => {
   let songId = song.id;
-  let albumId = album;
-  let artistId = artist;
+  const [removeSong, setDeleteSong] = useState(true);
+  const { albumId, artistId } = useParams();
   const dispatch = useDispatch();
   function handleDeleteSong(e) {
     e.preventDefault();
@@ -24,6 +24,10 @@ const Song = ({ song, album, artist }) => {
         <button
           id="delete-song-button"
           className="fas fa-trash"
+          value={removeSong}
+          onChange={(e) => {
+            setDeleteSong(e.target.value);
+          }}
           type="submit"
         ></button>
       </form>
