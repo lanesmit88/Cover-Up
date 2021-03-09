@@ -93,15 +93,15 @@ router.post(
   })
 );
 
-router.delete("/:id/:albumId/:songId"),
+router.delete("/delete"),
   asyncHandler(async (req, res, next) => {
-    const { songId } = req.body;
-    const song = await Song.findOne({
-      where: {id: songId},
-    });
+    const { id } = req.body;
 
-    await song.destroy();
-     res.redirect("artists/:id/:albumId");;
-  });
+    const removeSong = await Song.findOne({ where: { id: id } });
+
+    await removeSong.destroy();
+    deletePost = { id };
+    res.json({ deletePost });
+  })
 
 module.exports = router;
